@@ -16,7 +16,7 @@ steps:
     - |
         if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME
-        gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster --zone us-central1-c --project gitops-vittal 
+        gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster1 --zone us-central1-c --project gitops-vittal 
         fi
  
   - name: 'gcr.io/$_PROJECT_ID/envsubst'
