@@ -1,1 +1,47 @@
-
+steps:
+- id: 'branch name'
+  name: 'alpine'
+  entrypoint: 'sh'  
+  args: 
+  - '-c'
+  - | 
+      echo "***********************"
+      echo "$BRANCH_NAME"
+      echo "***********************"
+      
+- name: gcr.io/cloud-builders/gcloud
+    entrypoint: 'bash' 
+    args:
+    - '-c'
+    - |
+        if [ -d "environments/$BRANCH_NAME/" ]; then
+        cd environments/$BRANCH_NAME
+        gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster --zone us-central1-c --project gitops-vittal 
+        fi
+ 
+ - name: 'gcr.io/$_PROJECT_ID/envsubst'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+        if [ -d "environments/$BRANCH_NAME/" ]; then
+        cd environments/$BRANCH_NAME
+        sh dev/scripts/create_gke_cluster.sh
+        echo "GKE cluster YML prepared"
+        fi
+        
+ - name: 'gcr.io/cloud-builders/kubectl'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |    
+        if [ -d "environments/$BRANCH_NAME/" ]; then
+        cd environments/$BRANCH_NAME
+        kubectl apply -f environments/dev/cluster.yml
+        echo "Customer GKE cluster provisioned"
+        fi
+      
+timeout: 1000s     
+options:
+  logging: CLOUD_LOGGING_ONLY
+        
