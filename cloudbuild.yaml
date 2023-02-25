@@ -26,7 +26,7 @@ steps:
     - |
         if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME
-        sh dev/scripts/create_gke_cluster.sh
+        sh dev/scripts/prepare_cluster_yml.sh
         echo "GKE cluster YML prepared"
         fi
         
