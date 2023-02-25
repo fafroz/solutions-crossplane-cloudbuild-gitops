@@ -39,7 +39,6 @@ steps:
     - '-c'
     - |    
         if [ -d "environments/$BRANCH_NAME/" ]; then
-        cd environments/$BRANCH_NAME
         kubectl apply -f environments/dev/cluster.yml
         echo "Customer GKE cluster provisioned"
         cd ../..
