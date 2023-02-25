@@ -19,7 +19,7 @@ steps:
         if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME
         gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster1 --zone us-central1-c --project gitops-vittal
-        cd ../../
+        cd ../..
         fi
  
   - name: 'gcr.io/$_PROJECT_ID/envsubst'
@@ -31,7 +31,7 @@ steps:
         cd environments/$BRANCH_NAME
         sh scripts/prepare_cluster_yml.sh
         echo "GKE cluster YML prepared"
-        cd ../../
+        cd ../..
         fi
         
   - name: 'gcr.io/cloud-builders/kubectl'
@@ -43,7 +43,7 @@ steps:
         cd environments/$BRANCH_NAME
         kubectl apply -f environments/dev/cluster.yml
         echo "Customer GKE cluster provisioned"
-        cd ../../
+        cd ../..
         fi
       
 timeout: 1000s     
