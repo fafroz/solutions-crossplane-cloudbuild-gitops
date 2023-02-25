@@ -1,15 +1,15 @@
 substitutions:
   _PROJECT_ID: gitops-vittal
 steps:
-  - name: alpine
-    args:
-      - '-c'
-      - |
-        echo "***********************"
-        echo "$BRANCH_NAME"
-        echo "***********************"
-    id: branch name
-    entrypoint: sh
+#   - name: alpine
+#     args:
+#       - '-c'
+#       - |
+#         echo "***********************"
+#         echo "$BRANCH_NAME"
+#         echo "***********************"
+#     id: branch name
+#     entrypoint: sh
       
   - name: gcr.io/cloud-builders/gcloud
     entrypoint: 'bash' 
@@ -18,6 +18,9 @@ steps:
     - |
         if [ -d "environments/$BRANCH_NAME/" ]; then
         cd environments/$BRANCH_NAME
+        echo "***********************"
+        echo "$BRANCH_NAME"
+        echo "***********************"
         gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster1 --zone us-central1-c --project gitops-vittal
         cd ../..
         fi
@@ -33,16 +36,16 @@ steps:
         cd ../..
         fi
         
-  - name: 'gcr.io/cloud-builders/kubectl'
-    entrypoint: 'bash'
-    args:
-    - '-c'
-    - |    
-        if [ -d "environments/$BRANCH_NAME/" ]; then
-        kubectl apply -f environments/dev/cluster.yml
-        echo "Customer GKE cluster provisioned"
-        cd ../..
-        fi
+#   - name: 'gcr.io/cloud-builders/kubectl'
+#     entrypoint: 'bash'
+#     args:
+#     - '-c'
+#     - |    
+#         if [ -d "environments/$BRANCH_NAME/" ]; then
+#         kubectl apply -f environments/dev/cluster.yml
+#         echo "Customer GKE cluster provisioned"
+#         cd ../..
+#         fi
       
 timeout: 1000s     
 options:
