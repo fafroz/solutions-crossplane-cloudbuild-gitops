@@ -1,1 +1,102 @@
 
+---
+# API Reference: https://doc.crds.dev/github.com/crossplane/provider-gcp/container.gcp.crossplane.io/GKECluster/v1beta1@v0.16.0
+
+apiVersion: container.gcp.crossplane.io/v1beta2
+kind: Cluster
+metadata:
+  name: ${GKE_CLUSTER_NAME}
+  labels:
+     service: gke
+     creation: crossplane
+spec:
+  forProvider:
+    addonsConfig:
+      networkPolicyConfig:
+        disabled: false
+    network: ${GKE_NETWORK}
+    subnetwork: ${GKE_SUBNETWORK}
+    location: ${GKE_CLUSTER_ZONE}
+    ipAllocationPolicy:
+      useIpAliases: true
+    masterAuth:
+      clientCertificateConfig:
+        issueClientCertificate: false
+    defaultMaxPodsConstraint:
+       maxPodsPerNode: 110
+    networkPolicy:
+      enabled: false
+    resourceLabels:
+       owner: crossplane
+  providerConfigRef:
+         name: default
+    
+      
+---
+
+# API Reference: https://doc.crds.dev/github.com/crossplane/provider-gcp/container.gcp.crossplane.io/NodePool/v1alpha1@v0.16.0
+
+apiVersion: container.gcp.crossplane.io/v1beta1
+kind: NodePool
+metadata:
+  name: ${GKE_NODEPOOL}
+spec:
+  forProvider:
+    autoscaling:
+      autoprovisioned: false
+      enabled: true
+      maxNodeCount: 1
+      minNodeCount: 1  
+    clusterRef:
+      name: ${GKE_CLUSTER_NAME}
+    config:
+      # sandboxConfig:
+      #   sandboxType: gvisor
+      diskSizeGb: 100
+      # diskType: pd-ssd
+      imageType: cos_containerd
+      labels:
+        test-label: crossplane-created
+      machineType: e2-medium
+      oauthScopes:
+        - "https://www.googleapis.com/auth/devstorage.read_only"
+        - "https://www.googleapis.com/auth/logging.write"
+        - "https://www.googleapis.com/auth/monitoring"
+        - "https://www.googleapis.com/auth/servicecontrol"
+        - "https://www.googleapis.com/auth/service.management.readonly"
+        - "https://www.googleapis.com/auth/trace.append"
+    initialNodeCount: 1
+    locations: 
+      - ${GKE_CLUSTER_ZONE}
+    management:
+      autoRepair: true
+      autoUpgrade: true
+  providerConfigRef:
+         name: default
+
+---
+
+# #API Reference: https://doc.crds.dev/github.com/crossplane/provider-gcp/container.gcp.crossplane.io/NodePool/v1alpha1@v0.16.0
+
+# apiVersion: database.gcp.crossplane.io/v1beta1
+# kind: CloudSQLInstance
+# metadata:
+#   name: mycloudsql
+# spec:
+#   forProvider:
+#     databaseVersion: MYSQL_5_6
+#     region: us-central1-c
+#     settings:
+#       dataDiskSizeGb: 10
+#       dataDiskType: PD_SSD
+#       ipConfiguration:
+#         ipv4Enabled: true
+#       tier: db-n1-standard-1
+#   providerRef:
+#     name: gcp-provider
+#   #reclaimPolicy: Delete
+#   writeConnectionSecretToRef:
+#     name: gcp-account-creds
+#     namespace: crossplane-system
+#   providerConfigRef:
+#          name: default
