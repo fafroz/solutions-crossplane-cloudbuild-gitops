@@ -19,7 +19,7 @@ steps:
         gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster1 --zone us-central1-c --project gitops-vittal 
         fi
  
-  - name: 'gcr.io/$_PROJECT_ID/envsubst'
+  - name: 'gcr.io/$GCP_PROJECT_ID/envsubst'
     entrypoint: 'bash'
     args:
     - '-c'
