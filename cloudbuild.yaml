@@ -1,5 +1,5 @@
 steps:
-- name: alpine
+  - name: alpine
     args:
       - '-c'
       - |
@@ -9,7 +9,7 @@ steps:
     id: branch name
     entrypoint: sh
       
-- name: gcr.io/cloud-builders/gcloud
+  - name: gcr.io/cloud-builders/gcloud
     entrypoint: 'bash' 
     args:
     - '-c'
@@ -19,7 +19,7 @@ steps:
         gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster --zone us-central1-c --project gitops-vittal 
         fi
  
- - name: 'gcr.io/$_PROJECT_ID/envsubst'
+  - name: 'gcr.io/$_PROJECT_ID/envsubst'
     entrypoint: 'bash'
     args:
     - '-c'
@@ -30,7 +30,7 @@ steps:
         echo "GKE cluster YML prepared"
         fi
         
- - name: 'gcr.io/cloud-builders/kubectl'
+  - name: 'gcr.io/cloud-builders/kubectl'
     entrypoint: 'bash'
     args:
     - '-c'
