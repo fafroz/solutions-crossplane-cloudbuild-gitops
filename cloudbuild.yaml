@@ -17,6 +17,7 @@ steps:
     - '-c'
     - |
         if [ -d "environments/$BRANCH_NAME/" ]; then
+        sh scripts/crossplaneHost_env_vars.sh
         cd environments/$BRANCH_NAME
         echo "***********************"
         echo "$BRANCH_NAME"
