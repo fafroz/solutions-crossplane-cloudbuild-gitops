@@ -21,7 +21,7 @@ steps:
         echo "***********************"
         echo "$BRANCH_NAME"
         echo "***********************"
-        gcloud container clusters get-credentials mgcp-host-crossplane-k8scluster1 --zone us-central1-c --project gitops-vittal
+        gcloud container clusters get-credentials $GKE_HOST_CLUSTER_NAME --zone $GKE_HOST_CLUSTER_ZONE --project $GCP_PROJECT_ID
         cd ../..
         fi
  
