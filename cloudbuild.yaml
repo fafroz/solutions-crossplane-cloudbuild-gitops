@@ -21,6 +21,7 @@ steps:
         echo "***********************"
         echo "$BRANCH_NAME"
         echo "***********************"
+        sh scripts/crossplaneHost_env_vars.sh
         gcloud container clusters get-credentials $GKE_HOST_CLUSTER_NAME --zone $GKE_HOST_CLUSTER_ZONE --project $GCP_PROJECT_ID
         cd ../..
         fi
