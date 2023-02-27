@@ -16,14 +16,14 @@ steps:
     args:
     - '-c'
     - |
-        if [ -d "environments/$BRANCH_NAME/" ]; then
+        if ["environments/$BRANCH_NAME/" ]; then
         sh scripts/crossplaneHost_env_vars.sh
         cd environments/$BRANCH_NAME
         echo "***********************"
         echo "$BRANCH_NAME"
         echo "***********************"
         sh scripts/crossplaneHost_env_vars.sh
-        gcloud container clusters get-credentials $GKE_HOST_CLUSTER_NAME --zone $GKE_HOST_CLUSTER_ZONE --project $GCP_PROJECT_ID
+        gcloud container clusters get-credentials $GKE_HOST_CLUSTER_NAME --zone $GKE_HOST_CLUSTER_ZONE --project $_PROJECT_ID
         cd ../..
         fi
  
@@ -32,7 +32,7 @@ steps:
     args:
     - '-c'
     - |
-        if [ -d "environments/$BRANCH_NAME/" ]; then
+        if ["environments/$BRANCH_NAME/" ]; then
         sh scripts/prepare_cluster_yml.sh
         echo "GKE cluster YML prepared"
         cd ../..
@@ -43,7 +43,7 @@ steps:
 #     args:
 #     - '-c'
 #     - |    
-#         if [ -d "environments/$BRANCH_NAME/" ]; then
+#         if ["environments/$BRANCH_NAME/" ]; then
 #         kubectl apply -f environments/dev/cluster.yml
 #         echo "Customer GKE cluster provisioned"
 #         cd ../..
@@ -52,4 +52,10 @@ steps:
 timeout: 1000s     
 options:
   logging: CLOUD_LOGGING_ONLY
+  
+availableSecrets:
+  secretManager:
+  - versionName: projects/$_PROJECT_ID/secrets/mySecret/versions/latest
+    env: 'MYSECRET'
+
         
