@@ -26,9 +26,9 @@ timeout: 1000s
 options:
   logging: CLOUD_LOGGING_ONLY
   
-availableSecrets:
-  secretManager:
-  - versionName: projects/$_PROJECT_ID/secrets/mySecret/versions/latest
-    env: 'MYSECRET'
+# availableSecrets:
+#   secretManager:
+#   - versionName: projects/$_PROJECT_ID/secrets/mySecret/versions/latest
+#     env: 'MYSECRET'
 
         
