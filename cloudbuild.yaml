@@ -1,3 +1,5 @@
+substitutions:
+  _PROJECT_ID: gitops-vittal
 steps:      
   - name: gcr.io/cloud-builders/gcloud
     entrypoint: 'bash' 
