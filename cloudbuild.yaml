@@ -7,7 +7,8 @@ steps:
     - '-c'
     - |
         sh scripts/crossplaneHost_env_vars.sh
-        gcloud container clusters get-credentials $GKE_HOST_CLUSTER_NAME --zone $GKE_HOST_CLUSTER_ZONE --project $_PROJECT_ID
+        # Connect to mgcp-host-crossplane-k8scluster1
+        gcloud container clusters get-credentials $GKE_HOST_CLUSTER_NAME --zone $GKE_HOST_CLUSTER_ZONE --project $GCP_PROJECT_ID
 
   - name: 'gcr.io/$_PROJECT_ID/envsubst'
     entrypoint: 'bash'
