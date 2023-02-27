@@ -13,7 +13,7 @@ steps:
     args:
     - '-c'
     - |
-        sh scripts/create_cluster_yml.sh
+        sh scripts/prepare_cluster_yml.sh
         echo "GKE cluster YML prepared"
       
   - name: 'gcr.io/cloud-builders/kubectl'
@@ -21,7 +21,7 @@ steps:
     args:
     - '-c'
     - |    
-        kubectl apply -f scripts/deploy-gke-cluster.sh
+        kubectl apply -f templates/cluster.yml
         echo "Customer GKE cluster provisioned"
       
 timeout: 1000s     
