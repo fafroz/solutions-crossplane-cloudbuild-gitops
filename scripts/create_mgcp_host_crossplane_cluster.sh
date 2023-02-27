@@ -24,13 +24,13 @@ sleep 100
 #### Install & configure the GCP provider on crossplane ####
 
 # Install the GCP Provider on Crossplane
-kubectl apply -f environments/dev/provider-gcp.yml
+kubectl apply -f templates/provider-gcp.yml
 sleep 10
 
 # Use envsubst to replace env var values in the provider-config YAML template file
 envsubst \
-    < environments/dev/provider-config-gcp.template.yml \
-    > environments/dev/provider-config-gcp.yml
+    < templates/provider-config-gcp.template.yml \
+    > templates/provider-config-gcp.yml
 
 # Configure the GCP Provider
-kubectl apply -f environments/dev/provider-config-gcp.yml
+kubectl apply -f templates/provider-config-gcp.yml
