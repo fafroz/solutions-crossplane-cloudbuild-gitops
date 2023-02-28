@@ -8,7 +8,7 @@ steps:
     - |
         sh scripts/connect_mgcpHostcluster.sh
         
-  - name: 'gcr.io/$_PROJECT_ID/envsubst:latest'
+  - name: 'gcr.io/$_PROJECT_ID/envsubst'
     entrypoint: 'bash'
     args:
     - '-c'
