@@ -44,7 +44,7 @@ spec:
     autoscaling:
       autoprovisioned: false
       enabled: true
-      maxNodeCount: 1
+      maxNodeCount: 2
       minNodeCount: 1  
     clusterRef:
       name: ${GKE_CLUSTER_NAME}
