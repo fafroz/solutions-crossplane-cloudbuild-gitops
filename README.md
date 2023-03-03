@@ -17,7 +17,7 @@ Manage infrastructure as code with crossplane and Cloud Build using the popular 
 
 ## Steps :
 
-1. **Clone the repo** (https://github.com/fafroz/crossplane-gitops.git)
+1. **Clone the repo** (git@github.com:fafroz/solutions-crossplane-cloudbuild-gitops.git)
 
 2. **Set up your environment variables**
 For your convenience, We ve created a file called **customer_env_vars.sh** in the scripts folder (/dev/scripts/customer_env_vars.sh):
@@ -34,11 +34,6 @@ Replace the values in <...> with your own as follows:
 **<gke_cluster_name>:** Name of the Kubernetes cluster on Google cloud.
 
 **<gke_cluster_zone>:** Name of the zone in which your Crossplane Kubernetes cluster resides.
-
-
-## Configuring your dev environment 
-
-## Promoting your environment to production
 
 
 ## Deployment
@@ -58,3 +53,8 @@ vim customer_env_vars.sh
 gcloud secrets versions access 1 --secret=gitops-solution --project=gitops-vittal > sa.json
 
 # run the below scripts
+
+
+## Configuring your dev environment 
+
+## Promoting your environment to production
