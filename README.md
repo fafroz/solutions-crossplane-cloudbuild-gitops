@@ -26,7 +26,7 @@ git clone git@github.com:fafroz/solutions-crossplane-cloudbuild-gitops.git
 cd solutions-crossplane-cloudbuild-gitops
 
  
-# Set up your environment variables(For your convenience, We ve created a file called **customer_env_vars.sh** in the scripts folder (/dev/scripts/customer_env_vars.sh))
+# Set up your environment variables(For your convenience, We have created a file called "customer_env_vars.sh" in the scripts folder.
 # edit customer_env_vars.sh
 vim customer_env_vars.sh
 
