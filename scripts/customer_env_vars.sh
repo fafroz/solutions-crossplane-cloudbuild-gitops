@@ -4,7 +4,7 @@
 
 export GCP_PROJECT_ID="gitops-vittal"
 export GCP_SERVICE_ACCOUNT_NAME="gitops-cloudbuild-gke@gitops-vittal.iam.gserviceaccount.com"
-export GCP_SERVICE_ACCOUNT_KEYFILE="gcp_service_account_keyfile"
+export GCP_SERVICE_ACCOUNT_KEYFILE="sa.json"
 export BASE64ENCODED_GCP_PROVIDER_CREDS=$(base64 $GCP_SERVICE_ACCOUNT_KEYFILE | tr -d "\n") # base64 encode the GCP credentials
 
 #customer Environment Variables
