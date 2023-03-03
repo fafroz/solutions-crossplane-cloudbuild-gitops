@@ -2,7 +2,7 @@
 
 Manage infrastructure as code with crossplane and Cloud Build using the popular GitOps methodology.
 
-# Pre-requisites
+## Pre-requisites
 
 1. You have an existing Google Cloud project
 
@@ -15,7 +15,7 @@ Manage infrastructure as code with crossplane and Cloud Build using the popular 
 5. Helm installed , minimum version v3.0.0+  (We are providing script to build , push Helm Image to container registry & use Helm image)
 
 
-# Steps :
+## Steps :
 
 1. **Clone the repo** (https://github.com/fafroz/crossplane-gitops.git)
 
@@ -36,7 +36,7 @@ Replace the values in <...> with your own as follows:
 **<gke_cluster_zone>:** Name of the zone in which your Crossplane Kubernetes cluster resides.
 
 
-# Configuring your dev environment 
+## Configuring your dev environment 
 
 ## Promoting your environment to production
 
