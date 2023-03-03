@@ -38,4 +38,23 @@ Replace the values in <...> with your own as follows:
 
 # Configuring your dev environment 
 
-# Promoting your environment to production
+## Promoting your environment to production
+
+
+## Deployment
+- clone Git repository
+- edit/modify customer_env_vars.sh for particular customer
+- prepare SA key (assumption is you have sufficient permissions)
+- run the scripts
+
+```
+git clone git@github.com:fafroz/solutions-crossplane-cloudbuild-gitops.git
+cd solutions-crossplane-cloudbuild-gitops
+
+# edit customer_env_vars.sh
+vim customer_env_vars.sh
+
+# prepare SA key
+gcloud secrets versions access 1 --secret=gitops-solution --project=gitops-vittal > sa.json
+
+# run the below scripts
