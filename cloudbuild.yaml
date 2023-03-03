@@ -1,6 +1,28 @@
 substitutions:
   _PROJECT_ID: gitops-vittal
-steps:      
+steps: 
+  - name: alpine
+    args:
+      - '-c'
+      - |
+        echo "***********************"
+        echo "$BRANCH_NAME"
+        echo "***********************"
+    id: branch name
+    entrypoint: sh
+    
+  - name: alpine
+    args:
+      - '-c'
+      - |
+        echo "******************************"
+        echo "******* Prepare SA key *******"
+        echo "******************************"
+        echo $$GITOPS_SA_KEY > sa.json
+    id: prepare sa key
+    entrypoint: sh
+    secretEnv: ['GITOPS_SA_KEY']
+    
   - name: gcr.io/cloud-builders/gcloud
     entrypoint: 'bash' 
     args:
@@ -28,9 +50,13 @@ timeout: 1000s
 options:
   logging: CLOUD_LOGGING_ONLY
   
+availableSecrets:
+  secretManager:
+  - versionName: projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest
+    env: 'GITOPS_SA_KEY'
+    
 # availableSecrets:
 #   secretManager:
-#   - versionName: projects/$_PROJECT_ID/secrets/mySecret/versions/latest
+#   - versionName: projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest
 #     env: 'MYSECRET'
-
         
