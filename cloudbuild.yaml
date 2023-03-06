@@ -21,7 +21,7 @@ steps:
         echo "$$GITOPS_SA_KEY" > sa.json
     id: prepare sa key
     entrypoint: sh
-    secretEnv: 'GITOPS_SA_KEY'
+    secretEnv: ['GITOPS_SA_KEY']
     
   - name: gcr.io/cloud-builders/gcloud
     entrypoint: 'bash' 
