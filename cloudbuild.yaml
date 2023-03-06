@@ -44,7 +44,7 @@ steps:
     - '-c'
     - |    
         kubectl apply -f templates/cluster.yml
-        echo "Customer GKE cluster provisioned"
+        echo "Customer GKE cluster provisioned.."
       
 timeout: 1000s     
 options:
