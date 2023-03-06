@@ -36,7 +36,7 @@ steps:
     - '-c'
     - |
         sh scripts/prepare_cluster_yml.sh
-        echo "GKE cluster YML prepared."
+        echo "GKE cluster YML prepared.."
       
   - name: 'gcr.io/cloud-builders/kubectl'
     entrypoint: 'bash'
@@ -54,9 +54,4 @@ availableSecrets:
   secretManager:
   - versionName: projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest
     env: 'GITOPS_SA_KEY'
-    
-# availableSecrets:
-#   secretManager:
-#   - versionName: projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest
-#     env: 'MYSECRET'
         
