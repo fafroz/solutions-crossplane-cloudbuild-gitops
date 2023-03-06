@@ -36,7 +36,7 @@ steps:
     - '-c'
     - |
         sh scripts/prepare_cluster_yml.sh
-        echo "GKE cluster YML prepared..."
+        echo "GKE cluster YML prepared."
       
   - name: 'gcr.io/cloud-builders/kubectl'
     entrypoint: 'bash'
