@@ -44,7 +44,7 @@ steps:
     - '-c'
     - |    
         kubectl apply -f templates/cluster.yml
-        echo "Customer GKE cluster provisioned."
+        echo "Customer GKE cluster provisioned.."
       
 timeout: 1000s     
 options:
@@ -52,5 +52,5 @@ options:
   
 availableSecrets:
   secretManager:
-  - versionName: 'projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest'
+  - versionName: projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest
     env: 'GITOPS_SA_KEY'
