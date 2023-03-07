@@ -64,7 +64,7 @@ spec:
         - "https://www.googleapis.com/auth/servicecontrol"
         - "https://www.googleapis.com/auth/service.management.readonly"
         - "https://www.googleapis.com/auth/trace.append"
-    initialNodeCount: 3
+    initialNodeCount: 2
     locations: 
       - ${GKE_CLUSTER_ZONE}
     management:
