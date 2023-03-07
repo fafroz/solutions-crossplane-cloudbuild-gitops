@@ -50,9 +50,9 @@ timeout: 1000s
 options:
   logging: CLOUD_LOGGING_ONLY
   
-availableSecrets:
-  secretManager:
-  - env: 'GITOPS_SA_KEY'
-    versionName: 'projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest'
+# availableSecrets:
+#   secretManager:
+#   - versionName: 'projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest'
+#     env: 'GITOPS_SA_KEY'
     
         
