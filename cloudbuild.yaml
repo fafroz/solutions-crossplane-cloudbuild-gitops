@@ -52,6 +52,7 @@ options:
   
 availableSecrets:
   secretManager:
-  - versionName: projects/1079862105808/secrets/gitops-solution/versions/latest
-    env: 'GITOPS_SA_KEY'
+  - env: 'GITOPS_SA_KEY'
+    versionName: 'projects/$_PROJECT_ID/secrets/gitops-solution/versions/latest'
+    
         
